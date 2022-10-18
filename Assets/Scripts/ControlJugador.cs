@@ -13,23 +13,44 @@ public class ControlJugador : MonoBehaviour
     public bool tienePowerUp;
     public Camera camaraTerceraPersona;
     public GameObject Balas;
-
+    public TMPro.TMP_Text textoRecolectados;
+    private int cont;
+    public TMPro.TMP_Text textoGanaste;
     public Transform posicionJugador;
-
+    Vector3 worldPosition;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         col = GetComponent<SphereCollider>();
-
+        textoGanaste.text = "";
+        cont = 0;
+        setearTextos();
+      
     }
 
+    private void setearTextos()
+    { 
+        textoRecolectados.text = "Cantidad recolectados: " + cont.ToString();
+        if (cont >= 3) 
+        {
+            textoGanaste.text = "Ganaste!";
+        } 
+    }
     private void FixedUpdate()
     {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out RaycastHit hit))
+        {
+            worldPosition = hit.point;
+        }
+
         float movimientoHorizontal = Input.GetAxis("Horizontal");
         float movimientoVertical = Input.GetAxis("Vertical");
         Vector3 vectorMovimiento = new Vector3(movimientoHorizontal, 0.0f, movimientoVertical);
         rb.AddForce(vectorMovimiento * rapidez);
+        transform.LookAt(new Vector3(worldPosition.x, 1f, worldPosition.z));
     }
     private void Update()
     {
@@ -40,58 +61,17 @@ public class ControlJugador : MonoBehaviour
             saltoActual++;
         }
 
-
         if (EstaEnPiso())
         {
             estaEnElPiso = true;
             saltoActual = 0;
-        }
+        }        
 
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("El rayo tocó al objeto: ");
-
-            RaycastHit hit;
-            if (Physics.Raycast(posicionJugador.transform.position, posicionJugador.TransformDirection(Vector3.forward), out hit, 5f))
-            {
-                Debug.Log("El rayo tocó al objeto: " + hit.collider.name);
-            }
-
-
-            /*Ray ray = camaraTerceraPersona.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-            RaycastHit hit;
-            if ((Physics.Raycast(ray, out hit) == true) && hit.distance < 5) 
-            { 
-                
-            }*/
-        }
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = camaraTerceraPersona.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-            RaycastHit hit;
-            if ((Physics.Raycast(ray, out hit) == true) && hit.distance < 5)
-            {
-                Debug.Log("El rayo tocó al objeto: " + hit.collider.name);
-                if (hit.collider.name.Substring(0, 3) == "EnemigoUno")
-                {
-                    GameObject objetoTocado = GameObject.Find(hit.transform.name);
-                    ControlEnemigo scriptObjetoTocado = (ControlEnemigo)objetoTocado.GetComponent(typeof(ControlEnemigo));
-                    if (scriptObjetoTocado != null)
-                    {
-                        scriptObjetoTocado.recibirDaño();
-                    }
-                }
-            }
-        }
-
-        if (Input.GetMouseButtonDown(0)) 
-        {
-            Ray ray = camaraTerceraPersona.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-            GameObject pro; 
-            pro = Instantiate(Balas, ray.origin, transform.rotation);
-            Rigidbody rb = pro.GetComponent<Rigidbody>();
-            rb.AddForce(camaraTerceraPersona.transform.forward * 15, ForceMode.Impulse);
-            Destroy(pro, 5); 
+            GameObject pro = Instantiate(Balas, transform.position + transform.forward * 3f, Quaternion.identity);
+            pro.GetComponent<Rigidbody>().AddForce(transform.forward * 15, ForceMode.Impulse);
+            Destroy(pro, 5f);
         }
     }
 
@@ -116,6 +96,8 @@ public class ControlJugador : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Coleccionable") == true)
         {
+            cont = cont + 1;
+            setearTextos();
             other.gameObject.SetActive(false);
 
         }

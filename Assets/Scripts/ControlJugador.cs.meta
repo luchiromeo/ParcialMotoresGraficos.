@@ -3,7 +3,11 @@ guid: 7e6a19ff0978dad45b35dd1c87dadd2b
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - col: {instanceID: 0}
+  - camaraTerceraPersona: {instanceID: 0}
+  - Balas: {fileID: 1758041635595152942, guid: 5e04969cfce7dac4bbaa3690e35ae911, type: 3}
+  - posicionJugador: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
