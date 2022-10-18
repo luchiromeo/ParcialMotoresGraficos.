@@ -14,6 +14,9 @@ public class ControlJugador : MonoBehaviour
     public Camera camaraTerceraPersona;
     public GameObject Balas;
 
+    public Transform posicionJugador;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -45,13 +48,22 @@ public class ControlJugador : MonoBehaviour
         }
 
         if (Input.GetMouseButtonDown(0))
-        { 
-            Ray ray = camaraTerceraPersona.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        {
+            Debug.Log("El rayo tocó al objeto: ");
+
+            RaycastHit hit;
+            if (Physics.Raycast(posicionJugador.transform.position, posicionJugador.TransformDirection(Vector3.forward), out hit, 5f))
+            {
+                Debug.Log("El rayo tocó al objeto: " + hit.collider.name);
+            }
+
+
+            /*Ray ray = camaraTerceraPersona.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
             RaycastHit hit;
             if ((Physics.Raycast(ray, out hit) == true) && hit.distance < 5) 
             { 
-                Debug.Log("El rayo tocó al objeto: " + hit.collider.name); 
-            }
+                
+            }*/
         }
         if (Input.GetMouseButtonDown(0))
         {
