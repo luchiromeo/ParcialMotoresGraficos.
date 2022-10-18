@@ -64,6 +64,12 @@ public class ControlJugador : MonoBehaviour
             transform.localScale *= 2;
             rapidez += 1;
         }
+        if (other.gameObject.CompareTag("Coleccionable") == true)
+        {
+            other.gameObject.SetActive(false);
+
+        }
+
     }
     private void reiniciar()
     {
@@ -72,4 +78,5 @@ public class ControlJugador : MonoBehaviour
 
         }
     }
+    
 }  
