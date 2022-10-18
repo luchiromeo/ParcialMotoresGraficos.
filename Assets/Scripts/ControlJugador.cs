@@ -42,6 +42,7 @@ public class ControlJugador : MonoBehaviour
             saltoActual = 0;
         }
 
+
     }
 
     private void OnColissionEnter(Collision col)
@@ -71,4 +72,4 @@ public class ControlJugador : MonoBehaviour
 
         }
     }
-}
+}  
