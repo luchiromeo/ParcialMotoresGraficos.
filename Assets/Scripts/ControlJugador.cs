@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ControlJugador : MonoBehaviour
 {
@@ -19,6 +20,9 @@ public class ControlJugador : MonoBehaviour
     public Transform posicionJugador;
     Vector3 worldPosition;
     private int hp;
+    public TMPro.TMP_Text textoGameOver;
+    public TMPro.TMP_Text PresioneH;
+    public bool Perdio = false;
 
 
     void Start()
@@ -38,7 +42,9 @@ public class ControlJugador : MonoBehaviour
         if (cont >= 3) 
         {
             textoGanaste.text = "Ganaste!";
-        } 
+        }
+       
+      
     }
     private void FixedUpdate()
     {
@@ -76,6 +82,11 @@ public class ControlJugador : MonoBehaviour
             pro.GetComponent<Rigidbody>().AddForce(transform.forward * 15, ForceMode.Impulse);
             Destroy(pro, 5f);
         }
+        if (Input.GetKeyDown(KeyCode.H) && Perdio)
+        {
+               SceneManager.LoadScene(0);
+        } 
+        
     }
 
     private void OnColissionEnter(Collision col)
@@ -120,8 +131,14 @@ public class ControlJugador : MonoBehaviour
 
     public void recibirDaño()
     {
-        hp = hp - 10; if (hp <= 0)
+        hp = hp - 10;
+        if (hp <= 0)
         {
+            hp = 0;
+           
+            textoGameOver.text = " GAME  OVER!!!! ";
+            PresioneH.text = "Presione H para reiniciar";
+            Perdio = true;
             this.desaparecer();
         }
     }

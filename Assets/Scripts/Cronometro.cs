@@ -7,9 +7,11 @@ using UnityEngine.SceneManagement;
 public class Cronometro : MonoBehaviour
 {
     float currentTime;
-    public float startingTime = 60f; 
-
-    [SerializeField] TextMeshProUGUI countdownText;
+    public float startingTime = 60f;
+    public TMPro.TMP_Text textoGameOver;
+    public TMPro.TMP_Text PresioneH;
+    [SerializeField] 
+    TextMeshProUGUI countdownText;
     void Start()
     {
         currentTime = startingTime;
@@ -22,9 +24,15 @@ public class Cronometro : MonoBehaviour
         if (currentTime <= 0)
         {
             currentTime = 0;
+            textoGameOver.text = " GAME  OVER!!!! ";
+            PresioneH.text = "Presione H para reiniciar";
+            if (Input.GetKeyDown(KeyCode.H)) 
+            {
+              
+                SceneManager.LoadScene(0);
+            }
 
             
-            SceneManager.LoadScene(0);
         }
     }
 }
