@@ -23,6 +23,7 @@ public class ControlJugador : MonoBehaviour
     public TMPro.TMP_Text textoGameOver;
     public TMPro.TMP_Text PresioneH;
     public bool Perdio = false;
+    public TMPro.TMP_Text textoVida;
 
 
     void Start()
@@ -43,6 +44,8 @@ public class ControlJugador : MonoBehaviour
         {
             textoGanaste.text = "Ganaste!";
         }
+        textoVida.text = " vida: " + hp;
+
        
       
     }
@@ -85,8 +88,10 @@ public class ControlJugador : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.H) && Perdio)
         {
                SceneManager.LoadScene(0);
-        } 
+            this.desaparecer();
+        }
         
+
     }
 
     private void OnColissionEnter(Collision col)
@@ -131,7 +136,9 @@ public class ControlJugador : MonoBehaviour
 
     public void recibirDaño()
     {
+        
         hp = hp - 10;
+        setearTextos();
         if (hp <= 0)
         {
             hp = 0;
@@ -139,7 +146,7 @@ public class ControlJugador : MonoBehaviour
             textoGameOver.text = " GAME  OVER!!!! ";
             PresioneH.text = "Presione H para reiniciar";
             Perdio = true;
-            this.desaparecer();
+           
         }
     }
     private void desaparecer()
