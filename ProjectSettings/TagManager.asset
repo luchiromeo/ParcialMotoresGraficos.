@@ -8,6 +8,8 @@ TagManager:
   - Jugador
   - Coleccionable
   - Bala
+  - BalaEnemiga
+  - EnemigoSaltarin
   layers:
   - Default
   - TransparentFX

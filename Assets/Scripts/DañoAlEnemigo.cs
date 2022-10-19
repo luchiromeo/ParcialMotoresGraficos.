@@ -20,7 +20,7 @@ public class DañoAlEnemigo : MonoBehaviour
     }
     public void recibirDaño()
     {
-        hp = hp - 25; if (hp <= 0)
+        hp = hp - 35; if (hp <= 0)
         {
             this.desaparecer();
         }

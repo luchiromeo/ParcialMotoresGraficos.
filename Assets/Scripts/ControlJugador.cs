@@ -18,6 +18,8 @@ public class ControlJugador : MonoBehaviour
     public TMPro.TMP_Text textoGanaste;
     public Transform posicionJugador;
     Vector3 worldPosition;
+    private int hp;
+
 
     void Start()
     {
@@ -26,7 +28,8 @@ public class ControlJugador : MonoBehaviour
         textoGanaste.text = "";
         cont = 0;
         setearTextos();
-      
+        hp = 100;
+
     }
 
     private void setearTextos()
@@ -101,6 +104,10 @@ public class ControlJugador : MonoBehaviour
             other.gameObject.SetActive(false);
 
         }
+        if (other.gameObject.CompareTag("EnemigoSaltarin") == true)
+        {
+            
+        }
 
     }
     private void reiniciar()
@@ -110,6 +117,32 @@ public class ControlJugador : MonoBehaviour
 
         }
     }
+
+    public void recibirDaño()
+    {
+        hp = hp - 35; if (hp <= 0)
+        {
+            this.desaparecer();
+        }
+    }
+    private void desaparecer()
+    {
+        Destroy(gameObject);
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("EnemigoSaltarin"))
+        {
+            recibirDaño();
+        }
+
+
+        if (collision.gameObject.CompareTag("BalaEnemiga"))
+        {
+            recibirDaño();
+        }
+    }
     
+
 
 }  

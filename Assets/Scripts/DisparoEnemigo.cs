@@ -6,10 +6,10 @@ public class DisparoEnemigo : MonoBehaviour
 {   
     [SerializeField]
    
-    private GameObject Balas;
+    private GameObject BalaEnemiga;
   
     [SerializeField]
-    private float Time = 2f;
+    private float Time = 0.5f;
     private int maximoContador = 25;
     private int contador;
   
@@ -32,7 +32,7 @@ public class DisparoEnemigo : MonoBehaviour
         for (int i = 0; i < maximoContador; i++)
         {
             contador++;
-            Instantiate(Balas, transform.position, transform.rotation);
+            Instantiate(BalaEnemiga, transform.position, transform.rotation);
             yield return new WaitForSeconds(Time);
         }
         Debug.Log("Fin corountine");
