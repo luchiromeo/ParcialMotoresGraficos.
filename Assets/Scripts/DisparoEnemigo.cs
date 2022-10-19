@@ -32,7 +32,8 @@ public class DisparoEnemigo : MonoBehaviour
         for (int i = 0; i < maximoContador; i++)
         {
             contador++;
-            Instantiate(BalaEnemiga, transform.position, transform.rotation);
+            GameObject pro = Instantiate(BalaEnemiga, transform.position, transform.rotation);
+            pro.GetComponent<Rigidbody>().AddForce(transform.forward * 15, ForceMode.Impulse);
             yield return new WaitForSeconds(Time);
         }
         Debug.Log("Fin corountine");

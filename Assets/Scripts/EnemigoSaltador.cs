@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemigoSaltador : MonoBehaviour
 {
+    GameObject EnemigoSaltarin;
+
     bool descender = false;
     int rapidez = 10; 
     void Update() 
@@ -32,5 +34,14 @@ public class EnemigoSaltador : MonoBehaviour
     {
         transform.position -= transform.up * rapidez * Time.deltaTime; 
     }
+
+    private void OnColissionEnter(Collision other)
+    {
+       if (other.gameObject.CompareTag("Jugador") == true)
+        {
+           
+        }
+    }
+
 }
 

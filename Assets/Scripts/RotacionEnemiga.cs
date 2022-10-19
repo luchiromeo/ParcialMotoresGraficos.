@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RotacionDeTorreta : MonoBehaviour
+public class RotacionEnemiga : MonoBehaviour
 {
     public Transform Objetivo;
    
