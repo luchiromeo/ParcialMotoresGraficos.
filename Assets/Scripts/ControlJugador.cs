@@ -120,7 +120,7 @@ public class ControlJugador : MonoBehaviour
 
     public void recibirDaño()
     {
-        hp = hp - 35; if (hp <= 0)
+        hp = hp - 10; if (hp <= 0)
         {
             this.desaparecer();
         }

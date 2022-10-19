@@ -5,31 +5,31 @@ using UnityEngine;
 
 public class EnemigoLaterales : MonoBehaviour 
 {
-    bool VoyIzquierda = false;
+    bool Bajo = false;
     int rapidez = 10; 
     void Update() 
     { 
-        if (transform.position.y >= 8)
+        if (transform.position.y >=8)
         {
-            VoyIzquierda = true; 
-        } 
-        if (transform.position.y <= 0) 
-        { VoyIzquierda = false;
+            Bajo = true; 
+        } else if (transform.position.y <=2) 
+        {
+          Bajo = false;
         }
-        if (VoyIzquierda)
+        if (Bajo)
         { 
-            Izquierda();
+            Down();
         } else
         {
-            Derecha();
+           Up();
         } 
     } 
-    void Derecha() 
+    void Up() 
     {
-        transform.position += transform.right * rapidez * Time.deltaTime; 
+        transform.position += transform.up * rapidez * Time.deltaTime; 
     } 
-    void Izquierda() 
+    void Down() 
     { 
-        transform.position -= transform.right * rapidez * Time.deltaTime; 
+        transform.position -= transform.up * rapidez * Time.deltaTime; 
     } 
 }

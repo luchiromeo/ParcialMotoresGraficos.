@@ -327,7 +327,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &166226900
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -665,7 +665,7 @@ MonoBehaviour:
   capaPiso:
     serializedVersion: 2
     m_Bits: 1
-  magnitudSalto: 5
+  magnitudSalto: 7
   col: {fileID: 2097391113}
   maxSaltos: 1
   saltoActual: 0
@@ -718,6 +718,7 @@ GameObject:
   - component: {fileID: 358816122}
   - component: {fileID: 358816121}
   - component: {fileID: 358816120}
+  - component: {fileID: 358816125}
   m_Layer: 0
   m_Name: EnemigoSaltarin
   m_TagString: EnemigoSaltarin
@@ -815,6 +816,18 @@ Transform:
   m_Father: {fileID: 80490587}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &358816125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358816119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d09e9a2b6710d36489b8f006bc7864d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &380014288
 GameObject:
   m_ObjectHideFlags: 0
@@ -1251,14 +1264,15 @@ GameObject:
   - component: {fileID: 479253693}
   - component: {fileID: 479253692}
   - component: {fileID: 479253691}
-  - component: {fileID: 479253696}
+  - component: {fileID: 479253697}
+  - component: {fileID: 479253698}
   m_Layer: 0
   m_Name: EnemigoLaterales
-  m_TagString: Untagged
+  m_TagString: EnemigoSaltarin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &479253691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1342,29 +1356,40 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 479253689}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.3543453, y: -1.6065425, z: 1.9761958}
+  m_LocalPosition: {x: -4.83, y: -1.6065425, z: 1.9761958}
   m_LocalScale: {x: 1, y: 1.8177, z: 1.7031}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 80490587}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &479253696
-Rigidbody:
+--- !u!114 &479253697
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 479253689}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12558bddd77fd5d419cfb329e09304e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BalaEnemiga: {fileID: 1373367560}
+  Time: 0.5
+--- !u!114 &479253698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 479253689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 466ea47a5d03bb24a9681d7d2cbef12f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Objetivo: {fileID: 283087338}
 --- !u!1 &548968276
 GameObject:
   m_ObjectHideFlags: 0
@@ -1985,7 +2010,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1044626022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2651,7 +2676,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1723901421
 Transform:
   m_ObjectHideFlags: 0
